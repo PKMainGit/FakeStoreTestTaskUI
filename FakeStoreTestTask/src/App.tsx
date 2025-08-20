@@ -2,10 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import VerifyAdmin from "./pages/VerifyAdmin";
-import DashboardLayout from "./components/DashboardLayout";
+import DashboardLayout from "./pages/DashboardLayout";
 import HomeRedirect from "./components/BaseLink";
-import AdminDashboard from "./pages/AdminDashboard";
-import CashierDashboard from "./pages/CashierDashboard";
+import AdminDashboard from "./components/AdminDashboard";
+import CashierDashboard from "./components/CashierDashboard";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           {/* дочірні */}
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="cashier" element={<CashierDashboard />} />
+          <Route path="products" element={<ProductsPage />} />
         </Route>
       </Routes>
     </Router>

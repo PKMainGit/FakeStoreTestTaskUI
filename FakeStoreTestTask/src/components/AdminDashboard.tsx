@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
+import Statistics from "./Statistics";
 
 const AdminDashboard = () => {
   const [message, setMessage] = useState("");
@@ -55,6 +56,12 @@ const AdminDashboard = () => {
         >
           Create User
         </button>
+      </div>
+      <div>
+        <h1 className="text-2xl font-bold mb-4">Stats</h1>
+        <div>
+          <Statistics />
+        </div>
       </div>
     </div>
   );
