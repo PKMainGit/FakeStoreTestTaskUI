@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Dashboard = () => {
+const AdminDashboard = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -25,19 +25,6 @@ const Dashboard = () => {
 
     fetchDashboard();
   }, [navigate]);
-
-  const handleLogout = async () => {
-    try {
-      await axios.post(
-        "http://localhost:5000/api/auth/logout",
-        {},
-        { withCredentials: true }
-      );
-    } catch (err) {
-      console.error(err);
-    }
-    navigate("/login");
-  };
 
   const handleCreateUser = async () => {
     try {
@@ -63,12 +50,6 @@ const Dashboard = () => {
         <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
         <p>{message}</p>
         <button
-          onClick={handleLogout}
-          className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
-        >
-          Logout
-        </button>
-        <button
           onClick={handleCreateUser}
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mb-4"
         >
@@ -79,4 +60,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default AdminDashboard;
