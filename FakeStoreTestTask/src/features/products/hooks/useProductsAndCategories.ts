@@ -1,7 +1,7 @@
 // src/hooks/useProductsAndCategories.ts
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import type { Product } from "../types/types";
+import type { Product } from "../../../types/index";
 
 interface UseProductsParams {
   search?: string;
@@ -51,15 +51,15 @@ const useProductsAndCategories = ({
         "http://localhost:5000/api/products",
         { params: queryParams, withCredentials: true }
       );
-			console.log(response.data);
+      console.log(response.data);
       const allProducts = response.data.products;
       setProducts(allProducts);
 
       const uniqueCategories = Array.from(
         new Set(allProducts.map((p) => p.category))
       );
-			setCategories(uniqueCategories);
-			console.log(uniqueCategories);
+      setCategories(uniqueCategories);
+      console.log(uniqueCategories);
     } catch (err) {
       console.error("Failed to fetch products or categories", err);
       setError("Failed to fetch products or categories");

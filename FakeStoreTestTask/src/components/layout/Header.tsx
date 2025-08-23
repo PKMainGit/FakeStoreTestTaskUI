@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Cart } from "./Cart"; // імпортуємо компонент корзини
+import { Cart } from "../../features/cart/components/Cart"; // імпортуємо компонент корзини
 
 const Header = () => {
   const navigate = useNavigate();

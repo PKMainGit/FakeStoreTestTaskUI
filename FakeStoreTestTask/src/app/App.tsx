@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import VerifyAdmin from "./pages/VerifyAdmin";
-import DashboardLayout from "./pages/DashboardLayout";
-import HomeRedirect from "./components/BaseLink";
-import AdminDashboard from "./components/AdminDashboard";
-import CashierDashboard from "./components/CashierDashboard";
-import ProductsPage from "./pages/ProductsPage";
+import Register from "../features/auth/pages/Register";
+import Login from "../features/auth/pages/Login";
+import VerifyAdmin from "../features/auth/pages/VerifyAdmin";
+import HomeRedirect from "../features/auth/redirect/BaseLink";
+import Dashboard from "../features/dashboard/pages/DashboardPage";
+import AdminDashboard from "../features/dashboard/components/AdminDashboard";
+import CashierDashboard from "../features/dashboard/components/CashierDashboard";
+import ProductsPage from "../features/products/pages/ProductsPage";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/reg" element={<Register />} />
         <Route path="/verify-admin" element={<VerifyAdmin />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route path="/dashboard" element={<Dashboard />}>
           {/* дочірні */}
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="cashier" element={<CashierDashboard />} />

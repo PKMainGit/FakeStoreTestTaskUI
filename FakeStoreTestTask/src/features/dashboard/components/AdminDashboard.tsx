@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import Statistics from "./Statistics";
+import Statistics from "../../reports/components/Statistics";
 
 const AdminDashboard = () => {
   const [message, setMessage] = useState("");

@@ -1,18 +1,20 @@
 // src/components/products/ProductCard.tsx
 import React from "react";
 import { Card, CardContent, Typography, Button } from "@mui/material";
-import type { Product } from "../../types/types";
+import type { Product } from "../../../types";
 
 interface ProductCardProps {
   product: Product;
   onEdit: (product: Product) => void;
   onDelete: (id: number) => void;
+  onAddToCart: (product: Product) => void; // 🔹 новий пропс
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
   product,
   onEdit,
   onDelete,
+  onAddToCart, // 🔹 приймаємо пропс
 }) => {
   return (
     <Card className="shadow-lg rounded-lg">
@@ -59,6 +61,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
             onClick={() => onDelete(product.id)}
           >
             Delete
+          </Button>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => onAddToCart(product)}
+          >
+            Add to Cart
           </Button>
         </div>
       </CardContent>
