@@ -2,28 +2,30 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { fetchProducts as fetchProductsAPI } from "../api/products";
-import { uploadImages, deleteImage } from "../api/upload";
+import { fetchProducts as fetchProductsAPI } from "../../../api/products";
+import { uploadImages, deleteImage } from "../../../api/upload";
 
-import type { Product, Category, ReportType, ReportData } from "../types/types";
+import type { Product, Category, ReportType, ReportData } from "../../../types";
 import ProductModal, {
   type ProductFormData,
-} from "../components/products/ProductModal";
-import ProductsControls from "../components/products/ProductsControls";
-import ProductsGrid from "../components/products/ProductsGrid";
-import ReportModal from "../components/reports/ReportModal";
-import AppSnackbar from "../components/common/AppSnackbar";
-import Loader from "../components/common/Loader";
+} from "../components/ProductModal";
+import ProductsControls from "../components/ProductsControls";
+import ProductsGrid from "../components/ProductsGrid";
+import ReportModal from "../../reports/components/ReportModal";
+import AppSnackbar from "../../../components/common/AppSnackbar";
+import Loader from "../../../components/common/Loader";
 
 import useProductsAndCategories from "../hooks/useProductsAndCategories";
-import useSnackbar from "../hooks/useSnackbar";
+import useSnackbar from "../../../hooks/useSnackbar";
 
 import {
   validateName,
   validatePrice,
   validateCategory,
   validateStock,
-} from "../utils/validators";
+} from "../../../utils/validators";
+
+import { useCart } from "../../cart/hooks/useCart";
 
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -79,6 +81,8 @@ const ProductsPage = () => {
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [report, setReport] = useState<ReportType | "">("");
   const [reportData, setReportData] = useState<ReportData>([]);
+
+  const { addItem } = useCart();
 
   // ================================
   // Функція застосування фільтрів
@@ -237,6 +241,11 @@ const ProductsPage = () => {
     }
   };
 
+  const handleAddToCart = (product: Product) => {
+    addItem({ ...product, quantity: 1 }); // додаємо товар з кількістю 1
+    alert(`${product.name} додано до корзини`);
+  };
+
   // ================================
   // Render
   // ================================
@@ -279,6 +288,7 @@ const ProductsPage = () => {
           products={products}
           onEdit={handleOpenEdit}
           onDelete={handleDeleteProduct}
+          onAddToCart={handleAddToCart}
           loading={loading}
         />
       )}

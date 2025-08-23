@@ -14,10 +14,7 @@ export interface Product {
   description: string;
   image_urls: { url: string; public_id: string }[];
   created_at: string;
-}
-
-export interface CartProduct extends Product {
-  quantity: number;
+  quantity?: number;
 }
 // Union для report
 export type ReportData = Category[] | Product[];

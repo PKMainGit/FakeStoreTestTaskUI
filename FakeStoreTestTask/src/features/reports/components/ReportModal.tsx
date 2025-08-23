@@ -6,7 +6,7 @@ import {
   Button,
 } from "@mui/material";
 import jsPDF from "jspdf";
-import type { Category, Product, ReportModalProps } from "../../types/types";
+import type { Category, Product, ReportModalProps } from "../../../types";
 
 const ReportModal: React.FC<ReportModalProps> = ({
   open,

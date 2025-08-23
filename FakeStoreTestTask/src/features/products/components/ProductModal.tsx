@@ -12,14 +12,14 @@ import {
   CircularProgress,
 } from "@mui/material";
 import ProductImageUploader from "./ProductImageUploader";
-import { uploadImages, deleteImage } from "../../api/upload";
-import type { Product } from "../../types/types";
+import { uploadImages, deleteImage } from "../../../api/upload";
+import type { Product } from "../../../types";
 import {
   validateName,
   validatePrice,
   validateCategory,
   validateStock,
-} from "../../utils/validators";
+} from "../../../utils/validators";
 
 interface ProductModalProps {
   open: boolean;

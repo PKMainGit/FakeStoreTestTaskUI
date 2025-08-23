@@ -7,7 +7,7 @@ import {
   Button,
   FormControl,
 } from "@mui/material";
-import type { ReportType } from "../../types/types";
+import type { ReportType } from "../../../types";
 
 interface ProductsControlsProps {
   search: string;

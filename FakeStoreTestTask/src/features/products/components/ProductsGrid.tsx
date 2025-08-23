@@ -1,7 +1,7 @@
 // src/components/products/ProductsGrid.tsx
 import React from "react";
 import { CircularProgress, Typography } from "@mui/material";
-import type { Product } from "../../types/types";
+import type { Product } from "../../../types";
 import ProductCard from "./ProductCard";
 
 interface ProductsGridProps {
@@ -9,6 +9,7 @@ interface ProductsGridProps {
   loading: boolean;
   onEdit: (product: Product) => void;
   onDelete: (id: number) => void;
+  onAddToCart: (product: Product) => void;
 }
 
 const ProductsGrid: React.FC<ProductsGridProps> = ({
@@ -16,6 +17,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({
   loading,
   onEdit,
   onDelete,
+  onAddToCart,
 }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 relative min-h-[200px]">
@@ -30,6 +32,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({
             product={product}
             onEdit={() => onEdit(product)}
             onDelete={() => onDelete(product.id)}
+            onAddToCart={() => onAddToCart(product)}
           />
         ))
       ) : (
