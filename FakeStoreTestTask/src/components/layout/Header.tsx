@@ -1,13 +1,14 @@
-// src/components/Header.tsx
 import { useState } from "react";
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Cart } from "../../features/cart/components/Cart"; // імпортуємо компонент корзини
+import { Cart } from "../../features/cart/components/Cart";
+import { useOrders } from "../../features/orders/context/useOrders";
 
 const Header = () => {
   const navigate = useNavigate();
   const [showCart, setShowCart] = useState(false);
+	const { orderCount } = useOrders();
 
   const handleLogout = async () => {
     try {
@@ -35,6 +36,9 @@ const Header = () => {
             <Link to="/dashboard/products" className="hover:underline">
               Products
             </Link>
+            <Link to="/dashboard/orders" className="hover:underline">
+              Orders {orderCount > 0 && `(${orderCount})`}
+            </Link>
             <Button
               color="inherit"
               onClick={handleLogout}
@@ -42,7 +46,6 @@ const Header = () => {
             >
               Logout
             </Button>
-            {/* Кнопка корзини */}
             <Button
               color="inherit"
               onClick={() => setShowCart(!showCart)}
@@ -54,7 +57,6 @@ const Header = () => {
         </div>
       </Toolbar>
 
-      {/* Рендер корзини */}
       {showCart && (
         <div className="fixed top-20 right-4 w-80 z-50 bg-white shadow-lg p-4 rounded">
           <Cart />

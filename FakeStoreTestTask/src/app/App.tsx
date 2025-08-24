@@ -7,6 +7,7 @@ import Dashboard from "../features/dashboard/pages/DashboardPage";
 import AdminDashboard from "../features/dashboard/components/AdminDashboard";
 import CashierDashboard from "../features/dashboard/components/CashierDashboard";
 import ProductsPage from "../features/products/pages/ProductsPage";
+import OrdersPage from "../features/orders/pages/Orders";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="cashier" element={<CashierDashboard />} />
           <Route path="products" element={<ProductsPage />} />
+          <Route path="orders" element={<OrdersPage />} />;
         </Route>
       </Routes>
     </Router>
