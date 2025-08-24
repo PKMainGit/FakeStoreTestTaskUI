@@ -95,7 +95,7 @@ const Statistics = () => {
                     <TableRow key={item.id}>
                       <TableCell>{item.name}</TableCell>
                       <TableCell>{item.quantity}</TableCell>
-                      <TableCell>{item.price.toFixed(2)} PLN</TableCell>
+                      <TableCell>{item.price} PLN</TableCell>
                       <TableCell>
                         {(item.price * item.quantity).toFixed(2)} PLN
                       </TableCell>
@@ -136,7 +136,7 @@ const Statistics = () => {
                     <TableRow key={item.id}>
                       <TableCell>{item.name}</TableCell>
                       <TableCell>{item.quantity}</TableCell>
-                      <TableCell>{item.price.toFixed(2)} PLN</TableCell>
+                      <TableCell>{item.price} PLN</TableCell>
                       <TableCell>
                         {(item.price * item.quantity).toFixed(2)} PLN
                       </TableCell>

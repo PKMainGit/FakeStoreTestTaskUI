@@ -2,6 +2,7 @@ import { useCart } from "../../cart/hooks/useCart";
 import { useState } from "react";
 import type { Product } from "../../../types/index";
 import axios from "axios";
+import { useOrders } from "../../orders/context/useOrders";
 
 export const Cart = ({
   onPayment,
@@ -10,7 +11,8 @@ export const Cart = ({
 }) => {
   const { cartItems, removeItem, clearCart, getTotalPrice, updateQuantity } =
     useCart();
-  const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const { refreshOrders } = useOrders();
 
   if (cartItems.length === 0)
     return <p className="text-black">Корзина порожня</p>;
@@ -24,7 +26,9 @@ export const Cart = ({
         total: getTotalPrice(),
       });
 
-      console.log("Order created:", response.data);
+			console.log("Order created:", response.data);
+			
+			refreshOrders();
 
       if (onPayment) onPayment(cartItems);
 
@@ -109,3 +113,4 @@ export const Cart = ({
     </div>
   );
 };
+
